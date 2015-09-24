@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Button;
 
 // Tutorial de référence : http://code.tutsplus.com/tutorials/streaming-video-in-android-apps--cms-19888
 // Des flux video pour faire des essais : http://www.tvonlinestreams.com/
@@ -19,8 +20,8 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     private SurfaceHolder vidHolder;
     private SurfaceView vidSurface;
     // String vidAddress = "http://5.196.82.222:8000/live/test1/test1/3.ts";
-    // String vidAddress = "http://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
-    String vidAddress="http://37.187.248.101:8080/thevault.stream/index.m3u8";
+    String vidAddress = "http://archive.org/download/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+    // String vidAddress="http://37.187.248.101:8080/thevault.stream/index.m3u8";
     private boolean video_start = true;
 
     @Override
@@ -90,12 +91,16 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
 
     public void onclick_start_pause(View v){
         // TODO changer le texte du bouton
+        Button bt = (Button)v;
         if (video_start){
             mediaPlayer.pause();
             video_start = false;
+            bt.setText(R.string.start);
+
         } else {
             mediaPlayer.start();
             video_start = true;
+            bt.setText(R.string.pause);
         }
 
     }
